@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASCII Art Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>ASCII Art Generator</h1>
+      <p class="subtitle">Конвертируйте изображения в ASCII-арт прямо в браузере</p>
+    </header>
+
+    <div class="toolbar">
+      <!-- Загрузка файла -->
+      <section class="panel upload-panel">
+        <div class="dropzone" id="dropzone">
+          <p class="dropzone-hint">Перетащите изображение сюда или нажмите для выбора</p>
+          <input type="file" id="fileInput" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+          <button class="btn btn-primary" id="browseBtn">Выбрать файл</button>
+        </div>
+        <div class="file-info" id="fileInfo"></div>
+        <img id="previewThumb" class="preview-thumb" alt="Предпросмотр изображения" style="display:none;">
+      </section>
+
+      <!-- Настройки генерации -->
+      <section class="panel settings-panel">
+        <h3>Настройки</h3>
+        <div class="setting">
+          <label for="widthRange">Ширина (символов)</label>
+          <input type="range" id="widthRange" min="20" max="300" value="100">
+          <span id="widthValue">100</span>
+        </div>
+        <div class="setting">
+          <label for="presetSelect">Набор символов</label>
+          <select id="presetSelect">
+            <option value="standard">Standard</option>
+            <option value="detailed">Detailed</option>
+            <option value="blocks">Blocks</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </div>
+        <div class="setting setting--checkbox">
+          <input type="checkbox" id="invertCheck">
+          <label for="invertCheck">Инвертировать (тёмный/светлый фон)</label>
+        </div>
+        <div class="setting setting--checkbox">
+          <input type="checkbox" id="colorCheck">
+          <label for="colorCheck">Цветной ASCII</label>
+        </div>
+      </section>
+    </div>
+
+    <!-- Живой предпросмотр -->
+    <section class="panel preview-panel">
+      <div id="asciiOutput" class="ascii-output">Загрузите изображение, чтобы начать</div>
+    </section>
+
+    <!-- Экспорт -->
+    <div class="actions">
+      <button class="btn" id="downloadTxt">Скачать .txt</button>
+      <button class="btn" id="copyClipboard">Скопировать в буфер</button>
+      <button class="btn btn-primary" id="downloadPng">Скачать как PNG</button>
+    </div>
+
+    <!-- Сообщения об ошибках -->
+    <div id="error" class="error" role="alert"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/converter.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/exporter.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
